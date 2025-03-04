@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  background-color: #0072bc;
+  color: white;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-name {
+  margin-left: 30px;
+  font-weight: 400;
+  font-size: 22px;
+}
+
+.left-side {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.user-name {
+  margin-left: 20px;
+}
+
+.right-side {
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.bars-icon {
+  font-size: 18px;
+}
+
+.user-icon {
+  font-size: 18px;
+}

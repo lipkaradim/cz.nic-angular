@@ -1,0 +1,29 @@
+.menu-container {
+  height: 100vh;
+  width: 250px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.navbar-header {
+  color: #666;
+  margin-left: 20px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+
+.menu-item {
+  background-color: orange;
+}
+
+:host {
+  ::ng-deep {
+    .p-menu-item-label {
+      font-size: 22px;
+    }
+  }
+}
