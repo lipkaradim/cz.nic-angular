@@ -24,6 +24,11 @@
 
 .user-name {
   margin-left: 20px;
+  cursor: pointer;
+}
+
+.user-name:hover {
+  text-decoration: underline;
 }
 
 .right-side {
@@ -38,4 +43,43 @@
 
 .user-icon {
   font-size: 18px;
+}
+
+.dialog-wrapper {
+  position: fixed;
+  top: 50px;
+  right: 40px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 400px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: 20px 0px 20px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.user-name-dialog {
+  display: block;
+}
+
+.admin {
+  color: gray;
+}
+
+.user-info-label {
+  margin-left: 20px;
+}
+
+.logout {
+  margin: 20px;
+  cursor: pointer;
+}
+
+.logout-label {
+  margin-left: 20px;
 }

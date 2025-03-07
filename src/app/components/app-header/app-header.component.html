@@ -6,6 +6,28 @@
   
   <div class="right-side">
     <span class="pi pi-user user-icon"></span>
-    <p class="user-name">JAN MUSÍLEK</p>
+    <p class="user-name"
+      (click)="displayUserInfo()"
+      (keyup)="displayUserInfo()"
+      tabindex="0">
+      JAN MUSÍLEK
+    </p>
   </div>
 </div>
+
+<ng-template #dialogTemplate>
+  <div class="dialog-wrapper">
+    <div class="user-info">
+      <span class="pi pi-user user-icon"></span>
+      <div class="user-info-label">
+        <span class="user-name-dialog">Jan Musílek</span>
+        <span class="admin">admin</span>
+        </div>
+    </div>
+  
+    <div class="logout">
+      <span class="pi pi-sign-out"></span>
+      <span class="logout-label">Logout</span>
+    </div>
+  </div>
+</ng-template>

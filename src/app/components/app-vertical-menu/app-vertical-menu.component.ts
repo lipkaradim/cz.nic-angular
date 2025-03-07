@@ -4,7 +4,7 @@ import { MenuItem } from 'primeng/api';
 import { Menu } from 'primeng/menu';
 
 @Component({
-  selector: 'app-app-vertical-menu',
+  selector: 'app-vertical-menu',
   imports: [CommonModule, Menu],
   templateUrl: './app-vertical-menu.component.html',
   styleUrl: './app-vertical-menu.component.scss',
@@ -16,7 +16,7 @@ export class AppVerticalMenuComponent implements OnInit {
       this.model = [
           {
               label: 'Registry',
-              icon: 'pi pi-plus',
+              icon: 'pi pi-globe',
           },
       ];
   }

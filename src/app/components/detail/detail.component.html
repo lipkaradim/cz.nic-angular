@@ -1,0 +1,170 @@
+<div class="detail-wrapper">
+  <h2>neviditelna-univerzita.cz</h2>
+
+  <div class="toggleswitch">
+    <form [formGroup]="formGroup">
+      <p-toggleswitch formControlName="checked" />
+    </form>
+
+    <span class="toggleswitch-label">Verbose view</span>
+  </div>
+
+  <div class="tab-container" *ngIf="data$ | async as data">
+    <div class="column">
+      <div class="container">
+        <div class="row">
+          <span class="label">AuthInfo:</span>
+          <span class="first-column-value" style="display: flex;">
+            <span *ngIf="showPassword" class="password">Tajné heslo</span>
+            <button class="show-button"
+              (click)="displayPassword()">
+              {{showPassword ? 'HIDE' : 'SHOW' }}
+            </button>
+          </span>
+        </div>
+        <div class="row">
+          <span class="label">Expires at:</span>
+          <span class="first-column-value">{{ data.expires_at ? (data.expires_at | date: 'MMM d, y h:mm:ss a') : '' }}</span>
+        </div>
+      </div>
+
+      <div *ngIf="data.events" class="container">
+        <div class="header">Events:</div>
+        <div class="row">
+            <span class="label">Create date:</span>
+            <span class="first-column-value">{{ data.events.registered ? (data.events.registered.timestamp | date: 'MMM d, y h:mm:ss a') : '' }}</span>
+            <span class="second-column-label">Registrar:</span>
+            <a href="#" class="registrar">{{ data.events.registered ? data.events.registered.registrar_handle : '' }}</a>
+        </div>
+        <div class="row">
+            <span class="label">Update date:</span>
+            <span class="first-column-value">{{ data.events.updated ? (data.events.updated.timestamp | date: 'MMM d, y h:mm:ss a') : '' }}</span>
+            <span class="second-column-label">Registrar:</span>
+            <a href="#" class="registrar">{{ data.events.updated ? data.events.updated.registrar_handle : ''}}</a>
+        </div>
+        <div class="row">
+            <span class="label">Transfer date:</span>
+            <span class="first-column-value">{{ data.events.transferred ? (data.events.transferred.timestamp | date: 'MMM d, y h:mm:ss a') : '' }}</span>
+            <span class="second-column-label">Registrar:</span>
+            <a href="#" class="registrar">{{ data.events.transferred ? data.events.transferred.registrar_handle : '' }}</a>
+        </div>
+        <div class="row">
+          <span class="label">Delete date:</span>
+          <span class="first-column-value">{{ data.events.unregistered ? (data.events.unregistered.timestamp | date: 'MMM d, y h:mm:ss a') : ''}}</span>
+          <span class="second-column-label">Registrar:</span>
+          <a href="#" class="registrar">{{ data.events.unregistered ? data.events.unregistered.registrar_handle : '' }}</a>
+        </div>
+      </div>
+
+      <div *ngIf="data.state_flags.flags" class="container">
+        <div class="header">State flags:</div>
+        <ng-container *ngFor="let flag of data.state_flags.flags">
+          <ng-container *ngIf="flag.active">
+            <div style="display: flex;"> 
+              <span class="pi pi-check-circle checked-flag"></span> 
+              <span class="checked-flag">{{ flag.description }}</span>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="!flag.active && formGroup.get('checked')?.value">
+            <div style="display: flex;">
+              <span class="pi pi-times-circle timed-flag"></span>
+              <span class="timed-flag">{{ flag.description }}</span>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="column">
+      <div *ngIf="data.owner" class="container-right">
+        <div class="header">Owner:</div>
+        <div class="row">
+          <span class="label-right" style="margin-left: 25px;">Handle:</span>
+          <a href="#" class="handle">{{ data.owner.handle ? data.owner.handle : '' }}</a>
+        </div>
+        <div class="row">
+          <span [class]="data.owner.publish.organization ? 'pi pi-eye publish-true' : 'pi pi-eye-slash publish-false'" style="width: 15px;"></span>
+          <span class="label-right" style="margin-left: 10px;">Organization:</span>
+          <span class="first-column-value">{{ data.owner.organization ? data.owner.organization : '' }}</span>
+        </div>
+        <div class="row">
+          <span [class]="data.owner.publish.name ? 'pi pi-eye publish-true' : 'pi pi-eye-slash publish-false'" style="width: 15px;"></span>
+          <span class="label-right" style="margin-left: 10px;">Name:</span>
+          <span class="first-column-value">{{ data.owner.name ? data.owner.name : '' }}</span>
+        </div>
+      </div>
+
+      <ng-container *ngIf="formGroup.get('checked')?.value">
+        <ng-container *ngFor="let administrative_contact of data.administrative_contacts">
+          <div class="container-right">
+            <div class="header">Administrative contacts:</div>
+            <div class="row">
+              <span class="label-right" style="margin-left: 25px;">Handle:</span>
+              <a href="#" class="handle">{{ administrative_contact.handle ? administrative_contact.handle : '' }}</a>
+            </div>
+            <div class="row">
+              <span [class]="administrative_contact.publish.organization ? 'pi pi-eye publish-true' : 'pi pi-eye-slash publish-false'" style="width: 15px;"></span>
+              <span class="label-right" style="margin-left: 10px;">Organization:</span>
+              <span class="first-column-value">{{ administrative_contact.organization ? administrative_contact.organization : '' }}</span>
+            </div>
+            <div class="row">
+              <span [class]="administrative_contact.publish.name ? 'pi pi-eye publish-true' : 'pi pi-eye-slash publish-false'" style="width: 15px;"></span>
+              <span class="label-right" style="margin-left: 10px;">Name:</span>
+              <span class="first-column-value">{{ administrative_contact.name ? administrative_contact.name : '' }}</span>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="!formGroup.get('checked')?.value">
+        <div class="container-right">
+          <div class="header">Administrative contacts:</div>
+          <div class="row" *ngFor="let administrative_contact of data.administrative_contacts">
+            <span class="label-right">{{ administrative_contact.name }}</span>
+            <a href="#" class="handle">{{ administrative_contact.handle ? administrative_contact.handle : '' }}</a>
+          </div>
+        </div>
+      </ng-container>
+
+      <div *ngIf="data.nsset" class="container-right">
+        <div class="header">NSSet:</div>
+        <div class="row">
+          <span class="label-right">Handle:</span>
+          <a href="#" class="handle">{{ data.nsset.handle ? data.nsset.handle : '' }}</a>
+        </div>
+        <div class="row">
+          <span class="label-right">Registrar:</span>
+          <a href="#" class="handle">{{ data.nsset.registrar ? data.nsset.registrar : '' }}</a>
+        </div>
+        <div class="row">
+          <span class="label-right">DNS:</span>
+          <span style="margin-left: 70px;">
+            <ng-container *ngFor="let dns of data.nsset.dns">
+              <span style="display: block;">{{ dns.name + ' (' + dns.ip_address + ')'}}</span>
+            </ng-container>
+          </span>
+        </div>
+      </div>
+
+      <div *ngIf="data.keyset" class="container-right">
+        <div class="header">KeySet:</div>
+        <div class="row">
+          <span class="label-right">Handle:</span>
+          <a href="#" class="handle">{{ data.keyset.handle ? data.keyset.handle : '' }}</a>
+        </div>
+        <div class="row">
+          <span class="label-right">Registrar:</span>
+          <a href="#" class="handle">{{ data.keyset.registrar ? data.keyset.registrar : '' }}</a>
+        </div>
+        <div class="row">
+          <span class="label-right">DNS keys:</span>
+          <span class="first-column-value">
+            <ng-container *ngFor="let key of data.keyset.dns_keys">
+              <span style="display: block;">{{ key }}</span>
+            </ng-container>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

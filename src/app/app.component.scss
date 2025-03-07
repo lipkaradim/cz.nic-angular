@@ -1,0 +1,12 @@
+.main-container {
+  display: flex;
+}
+
+app-vertical-menu {
+  flex: 0 0 auto;
+}
+
+app-detail {
+  flex: 1;
+  min-width: 0;
+}

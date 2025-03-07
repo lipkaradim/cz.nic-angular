@@ -1,0 +1,141 @@
+.detail-wrapper {
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-top: 20px;
+  border-left: 1px solid #e0e0e0;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.toggleswitch {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.toggleswitch-label {
+  margin-left: 10px;
+  vertical-align: middle;
+  color: gray;
+  padding-top: 3px;
+}
+
+.container {
+  border: 1px solid #ddd;
+  box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  min-width: 800px;
+  margin-bottom: 25px;
+}
+
+.header {
+  background-color: #f0f0f0;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+}
+
+.label {
+  font-weight: bold;
+  width: 150px;
+}
+
+.first-column-value {
+  width: 200px;
+  margin-left: 70px;
+}
+
+.second-column-label {
+  font-weight: bold;
+  width: 100px;
+  margin-left: 50px;
+}
+
+.registrar {
+  color: #007bff;
+  text-decoration: none;
+  margin-left: 40px;
+}
+
+.show-button {
+  border: 0;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 25px 10px 25px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.checked-flag {
+  color: rgb(32,192,32);
+  padding: 5px 15px;
+}
+
+.flag-label {
+  color: rgb(32,192,32);
+}
+
+.timed-flag {
+  color: #e80000;
+  padding: 5px 15px;
+  display: block;
+}
+
+.tab-container {
+  display: flex;
+  gap: 30px;
+}
+
+.handle {
+  color: #007bff;
+  text-decoration: none;
+  margin-left: 70px;
+}
+
+.container-right {
+  border: 1px solid #ddd;
+  box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  min-width: 600px;
+  margin-bottom: 25px;
+}
+
+.label-right {
+  font-weight: bold;
+  width: 50px;
+}
+
+.publish-true {
+  color: rgb(32,192,32);
+}
+
+.publish-false {
+  color: #e80000;
+}
+
+.password {
+  margin-right: 10px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+@media (max-width: 1870px) {
+  .tab-container {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .container-right {
+    min-width: 800px;
+  }
+}
+
